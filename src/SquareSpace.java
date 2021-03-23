@@ -23,7 +23,7 @@ public class SquareSpace {
         this.rectangles = new ArrayList<>();
     }
 
-    public void addRectangle(Rectangle rectangle, Rectangle rectangle2){
+    public void addRectangles(Rectangle rectangle, Rectangle rectangle2){
         if (this.rectangles.size() >= 2){
             return;
         } else {
@@ -31,6 +31,7 @@ public class SquareSpace {
           this.rectangles.add(rectangle2);
           checkForIntersection(rectangle, rectangle2);
           checkForContainment(rectangle, rectangle2);
+          checkForAdjacency(rectangle, rectangle2);
         }
 
     }
@@ -76,15 +77,17 @@ public class SquareSpace {
         boolean adjacentByX = false;
         boolean adjacentByY = false;
 
-        if(rectangle2.getStartX() == rectangle.getEndX() + 1  && rectangle2.getStartY() <= rectangle.getEndY() && rectangle2.getStartY() >= rectangle.getStartY()){
+        if(rectangle2.getStartX() == rectangle.getEndX() + 1  && rectangle2.getStartY() <= rectangle.getEndY() || rectangle2.getStartY() >= rectangle.getStartY()){
             adjacentByX = true;
         }
-        
-//        if(){
-//          adjacentByY = true;
-//        }
 
+        if(rectangle2.getStartY() == rectangle.getEndY() + 1 && rectangle2.getStartX() <= rectangle.getEndX() || rectangle2.getStartX() >= rectangle.getStartX()){
+          adjacentByY = true;
+        }
 
+        if (adjacentByX || adjacentByY){
+            this.adjacency = "Exists";
+        }
 
     }
 
@@ -105,7 +108,13 @@ public class SquareSpace {
             for (int j =0; j <= width; j++){
 
                 if ( ((i == rec1.getEndY() || i == rec1.getStartY()) && j<= rec1.getEndX() && j>= rec1.getStartX()) || (i == rec2.getEndY() || i == rec2.getStartY()) && j<= rec2.getEndX() && j>= rec2.getStartX()){
-                    row += "*";
+
+                    if (j == rec1.getEndX() || j == rec1.getStartX() || j == rec2.getStartX() || j == rec2.getEndX()){
+                        row += "X";
+                    } else {
+                        row += "*";
+                    }
+
                 } else if(((j == rec1.getEndX() || j == rec1.getStartX()) && i<= rec1.getEndY() && i>= rec1.getStartY()) || ((j == rec2.getEndX() || j == rec2.getStartX()) && i<= rec2.getEndY() && i>= rec2.getStartY()) ){
                     row += "*";
                 } else if (i == 0 || i == length){
