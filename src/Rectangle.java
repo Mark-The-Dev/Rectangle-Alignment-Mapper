@@ -5,6 +5,7 @@ public class Rectangle {
     private final int startY;
     private final int endX;
     private final int endY;
+    private final int area;
 
 
     public Rectangle(int length, int width, int startX, int startY) {
@@ -14,7 +15,7 @@ public class Rectangle {
         this.startY = startY;
         this.endX = startX + (width - 1);
         this.endY = startY + (length - 1);
-        System.out.println(getEndX() + " . . ." + getEndY());
+        this.area = length * width;
     }
 
     public int getStartX() {
@@ -31,5 +32,9 @@ public class Rectangle {
 
     public int getEndY() {
         return endY;
+    }
+
+    public int getArea() {
+        return area;
     }
 }

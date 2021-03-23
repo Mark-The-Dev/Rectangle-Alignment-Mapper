@@ -1,3 +1,6 @@
+import org.w3c.dom.css.Rect;
+
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 
 public class SquareSpace {
@@ -7,6 +10,10 @@ public class SquareSpace {
     private final int endX;
     private final int endY;
     private ArrayList<Rectangle> rectangles;
+    private boolean intersection = false;
+    private boolean containment = false;
+    private String adjacency = "none";
+
 
     public SquareSpace(int length, int width) {
         this.length = length;
@@ -21,12 +28,65 @@ public class SquareSpace {
             return;
         } else {
           this.rectangles.add(rectangle);
-            this.rectangles.add(rectangle2);
-
+          this.rectangles.add(rectangle2);
+          checkForIntersection(rectangle, rectangle2);
+          checkForContainment(rectangle, rectangle2);
         }
 
     }
 
+    private void checkForIntersection(Rectangle rectangle, Rectangle rectangle2){
+        for(int i = rectangle.getStartX(); i<= rectangle.getEndX(); i++) {
+            if (i <= rectangle2.getEndX() && i >= rectangle2.getStartX()){
+                this.intersection = true;
+                return;
+            }
+        }
+        for(int i = rectangle.getStartY(); i<= rectangle.getEndY(); i++) {
+            if (i <= rectangle2.getEndY() && i >= rectangle2.getStartY()){
+                this.intersection = true;
+                return;
+            }
+        }
+    }
+
+    private void checkForContainment(Rectangle rectangle, Rectangle rectangle2){
+        Rectangle largerRectangle = rectangle;
+        Rectangle smallRectangle = rectangle2;
+
+        if(rectangle2.getArea() > rectangle.getArea()){
+            largerRectangle = rectangle2;
+            smallRectangle = rectangle;
+        }
+
+        if (smallRectangle.getEndY() > largerRectangle.getEndY()){
+            return;
+        } else if (smallRectangle.getEndX() > largerRectangle.getEndX()){
+            return;
+        } else if (smallRectangle.getStartY() < largerRectangle.getStartY() || smallRectangle.getStartX() < largerRectangle.getStartX()){
+            return;
+        } else {
+            this.containment = true;
+        }
+
+    }
+
+    private void checkForAdjacency(Rectangle rectangle, Rectangle rectangle2){
+
+        boolean adjacentByX = false;
+        boolean adjacentByY = false;
+
+        if(rectangle2.getStartX() == rectangle.getEndX() + 1  && rectangle2.getStartY() <= rectangle.getEndY() && rectangle2.getStartY() >= rectangle.getStartY()){
+            adjacentByX = true;
+        }
+        
+//        if(){
+//          adjacentByY = true;
+//        }
+
+
+
+    }
 
 
     public void drawMap(){
@@ -63,6 +123,7 @@ public class SquareSpace {
 
             }
         }
+        System.out.println("Intersection: " + intersection + ", containment: " + containment + ", adjacency: " + adjacency );
     }
 
 }
