@@ -1,7 +1,7 @@
 import org.w3c.dom.css.Rect;
 
 import javax.print.DocFlavor;
-import java.util.ArrayList;
+import java.util.*;
 
 public class SquareSpace {
 
@@ -37,27 +37,22 @@ public class SquareSpace {
     }
 
     private void checkForIntersection(Rectangle rectangle, Rectangle rectangle2){
-        Rectangle largerRectangle = rectangle;
-        Rectangle smallRectangle = rectangle2;
-
-        if(rectangle2.getArea() > rectangle.getArea()){
-            largerRectangle = rectangle2;
-            smallRectangle = rectangle;
-        }
 
 
-        for(int i = smallRectangle.getStartX(); i<= smallRectangle.getEndX(); i++) {
-            if (i == largerRectangle.getEndX() || i == largerRectangle.getStartX()){
-                this.intersection = true;
-                return;
+
+        for (int i = rectangle.getStartY(); i <= rectangle.getEndY(); i++) {
+
+            for (int j = rectangle.getStartX(); j <= rectangle.getEndX(); j++) {
+
+                if (i >= rectangle2.getStartY() && i<= rectangle2.getEndY() && j >= rectangle2.getStartX() && j <= rectangle2.getEndX()) {
+                    this.intersection = true;
+
+                }
             }
+
+
         }
-        for(int i = smallRectangle.getStartY(); i<= smallRectangle.getEndY(); i++) {
-            if (i == largerRectangle.getEndY() || i == largerRectangle.getStartY()) {
-                this.intersection = true;
-                return;
-            }
-        }
+
     }
 
     private void checkForContainment(Rectangle rectangle, Rectangle rectangle2){
@@ -85,11 +80,7 @@ public class SquareSpace {
 
         boolean adjacentByX = false;
         boolean adjacentByY = false;
-//
-//
-//        if(rectangle2.getStartY() == rectangle.getEndY() + 1 && rectangle2.getStartX() <= rectangle.getEndX() || rectangle2.getStartX() >= rectangle.getStartX()){
-//          adjacentByY = true;
-//        }
+
 
         if (rectangle.getStartX() == rectangle2.getEndX() + 1 || rectangle.getEndX() == rectangle2.getStartX() +1 || rectangle2.getEndX() +1 == rectangle.getStartX() || rectangle.getEndX() + 1 == rectangle2.getStartX()){
 
