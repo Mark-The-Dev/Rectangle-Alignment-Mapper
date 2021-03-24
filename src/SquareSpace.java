@@ -1,14 +1,12 @@
 import org.w3c.dom.css.Rect;
 
-import javax.print.DocFlavor;
+
 import java.util.*;
 
 public class SquareSpace {
 
     private final int length;
     private final int width;
-    private final int endX;
-    private final int endY;
     private ArrayList<Rectangle> rectangles;
     private boolean intersection = false;
     private boolean containment = false;
@@ -18,12 +16,18 @@ public class SquareSpace {
     public SquareSpace(int length, int width) {
         this.length = length;
         this.width = width;
-        this.endX = width -1;
-        this.endY = length -1;
         this.rectangles = new ArrayList<>();
     }
 
+
+
     public void addRectangles(Rectangle rectangle, Rectangle rectangle2){
+
+        if (rectangle.getEndX() > width - 1 || rectangle.getEndY() > length - 1 || rectangle2.getEndX() > width - 1 || rectangle2.getEndY() > length - 1){
+            System.out.println("Looks like one of these rectangles does not fit inside the map!");
+            return;
+        }
+
         if (this.rectangles.size() >= 2){
             return;
         } else {
@@ -128,6 +132,10 @@ public class SquareSpace {
     public void drawMap(){
         System.out.println("This Map is: " + length + " by "+ width);
 
+        if (this.rectangles.size() != 2){
+            System.out.println("This Map does not have 2 rectangles yet!");
+            return;
+        }
 
             Rectangle rec1 = rectangles.get(0);
             Rectangle rec2 = rectangles.get(1);
@@ -170,4 +178,11 @@ public class SquareSpace {
         System.out.println("Intersection: " + intersection + ", containment: " + containment + ", adjacency: " + adjacency );
     }
 
+    public int getLength() {
+        return length;
+    }
+
+    public int getWidth() {
+        return width;
+    }
 }
