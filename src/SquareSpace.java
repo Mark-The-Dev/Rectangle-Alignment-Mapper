@@ -37,14 +37,23 @@ public class SquareSpace {
     }
 
     private void checkForIntersection(Rectangle rectangle, Rectangle rectangle2){
-        for(int i = rectangle.getStartX(); i<= rectangle.getEndX(); i++) {
-            if (i <= rectangle2.getEndX() && i >= rectangle2.getStartX()){
+        Rectangle largerRectangle = rectangle;
+        Rectangle smallRectangle = rectangle2;
+
+        if(rectangle2.getArea() > rectangle.getArea()){
+            largerRectangle = rectangle2;
+            smallRectangle = rectangle;
+        }
+
+
+        for(int i = smallRectangle.getStartX(); i<= smallRectangle.getEndX(); i++) {
+            if (i == largerRectangle.getEndX() || i == largerRectangle.getStartX()){
                 this.intersection = true;
                 return;
             }
         }
-        for(int i = rectangle.getStartY(); i<= rectangle.getEndY(); i++) {
-            if (i <= rectangle2.getEndY() && i >= rectangle2.getStartY()){
+        for(int i = smallRectangle.getStartY(); i<= smallRectangle.getEndY(); i++) {
+            if (i == largerRectangle.getEndY() || i == largerRectangle.getStartY()) {
                 this.intersection = true;
                 return;
             }
@@ -76,14 +85,32 @@ public class SquareSpace {
 
         boolean adjacentByX = false;
         boolean adjacentByY = false;
+//
+//
+//        if(rectangle2.getStartY() == rectangle.getEndY() + 1 && rectangle2.getStartX() <= rectangle.getEndX() || rectangle2.getStartX() >= rectangle.getStartX()){
+//          adjacentByY = true;
+//        }
 
-        if(rectangle2.getStartX() == rectangle.getEndX() + 1  && rectangle2.getStartY() <= rectangle.getEndY() || rectangle2.getStartY() >= rectangle.getStartY()){
-            adjacentByX = true;
+        if (rectangle.getStartX() == rectangle2.getEndX() + 1 || rectangle.getEndX() == rectangle2.getStartX() +1 || rectangle2.getEndX() +1 == rectangle.getStartX() || rectangle.getEndX() + 1 == rectangle2.getStartX()){
+
+            for (int i =rectangle.getStartY(); i <= rectangle.getEndY(); i++ ){
+                if(i >= rectangle2.getStartY() && i <= rectangle2.getEndY()){
+                    adjacentByX = true;
+                    break;
+                }
+            }
+        } else if (rectangle.getStartY() == rectangle2.getEndY() +1 || rectangle.getEndY() + 1 == rectangle2.getStartY() || rectangle.getEndY() +1 == rectangle2.getStartY() || rectangle.getStartY() == rectangle2.getEndY() + 1){
+            for (int i =rectangle.getStartX(); i <= rectangle.getEndX(); i++ ) {
+                if (i >= rectangle2.getStartX() && i <= rectangle2.getEndX()) {
+                    adjacentByY = true;
+                    break;
+                }
+            }
         }
 
-        if(rectangle2.getStartY() == rectangle.getEndY() + 1 && rectangle2.getStartX() <= rectangle.getEndX() || rectangle2.getStartX() >= rectangle.getStartX()){
-          adjacentByY = true;
-        }
+
+
+
 
         if (adjacentByX || adjacentByY){
             this.adjacency = "Exists";
