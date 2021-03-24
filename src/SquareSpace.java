@@ -142,10 +142,11 @@ public class SquareSpace {
 
                 if ( ((i == rec1.getEndY() || i == rec1.getStartY()) && j<= rec1.getEndX() && j>= rec1.getStartX()) || (i == rec2.getEndY() || i == rec2.getStartY()) && j<= rec2.getEndX() && j>= rec2.getStartX()){
 
-                    if (j == rec1.getEndX() || j == rec1.getStartX() || j == rec2.getStartX() || j == rec2.getEndX()){
-                        // corners and potential adjacent tiles drawn
+                    if ((j == rec1.getEndX()) && (i== rec1.getStartY() || i == rec1.getEndY() ) || (j == rec1.getStartX()) && (i== rec1.getStartY() || i == rec1.getEndY() ) || (j == rec2.getStartX()) && (i== rec2.getStartY() || i == rec2.getEndY()) || (j == rec2.getEndX()) && (i== rec2.getStartY() || i == rec2.getEndY())){
+                        // corners rendered as X
                         row += "X";
                     } else {
+                        // other borders of rectangle rendered as *
                         row += "*";
                     }
 

@@ -2,8 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Rectangle rec1 = new Rectangle(6, 6, 0,2);
-        Rectangle rec2 = new Rectangle(5, 6, 5,0);
+        Rectangle rec1 = new Rectangle(4, 4, 4,2);
+        Rectangle rec2 = new Rectangle(4, 4, 0,0);
         //Rectangle rec2 = new Rectangle(8, 8, 8,8);
 
         SquareSpace newMap = new SquareSpace(14, 20);
