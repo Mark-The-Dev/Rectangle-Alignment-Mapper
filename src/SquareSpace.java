@@ -113,7 +113,13 @@ public class SquareSpace {
 
 
         if (adjacentByX){
-            //this.adjacency = "Exists";
+            if(rectangle.getStartY() == rectangle2.getStartY() && rectangle.getEndY() == rectangle2.getEndY()){
+                this.adjacency = "Proper";
+            } else if((rectangle.getStartY() > rectangle2.getStartY() && rectangle.getEndY() < rectangle2.getEndY()) || (rectangle2.getStartY() > rectangle.getStartY() && rectangle2.getEndY() < rectangle.getEndY()) ){
+                this.adjacency = "Sub-line";
+            } else {
+                this.adjacency = "Partial";
+            }
 
         } else if (adjacentByY){
             if(rectangle.getStartX() == rectangle2.getStartX() && rectangle.getEndX() == rectangle2.getEndX()){
@@ -146,6 +152,7 @@ public class SquareSpace {
                 if ( ((i == rec1.getEndY() || i == rec1.getStartY()) && j<= rec1.getEndX() && j>= rec1.getStartX()) || (i == rec2.getEndY() || i == rec2.getStartY()) && j<= rec2.getEndX() && j>= rec2.getStartX()){
 
                     if (j == rec1.getEndX() || j == rec1.getStartX() || j == rec2.getStartX() || j == rec2.getEndX()){
+                        // corners and potential adjacent tiles drawn
                         row += "X";
                     } else {
                         row += "*";
