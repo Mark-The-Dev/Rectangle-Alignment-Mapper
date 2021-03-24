@@ -112,8 +112,17 @@ public class SquareSpace {
 
 
 
-        if (adjacentByX || adjacentByY){
-            this.adjacency = "Exists";
+        if (adjacentByX){
+            //this.adjacency = "Exists";
+
+        } else if (adjacentByY){
+            if(rectangle.getStartX() == rectangle2.getStartX() && rectangle.getEndX() == rectangle2.getEndX()){
+                this.adjacency = "Proper";
+            } else if((rectangle.getStartX() > rectangle2.getStartX() && rectangle.getEndX() < rectangle2.getEndX()) || (rectangle2.getStartX() > rectangle.getStartX() && rectangle2.getEndX() < rectangle.getEndX()) ){
+                this.adjacency = "Sub-line";
+            } else {
+                this.adjacency = "Partial";
+            }
         }
 
     }
