@@ -40,7 +40,7 @@ public class SquareSpace {
 
     }
 
-    private void checkForIntersection(Rectangle rectangle, Rectangle rectangle2){
+    protected void checkForIntersection(Rectangle rectangle, Rectangle rectangle2){
 
 
 
@@ -59,7 +59,7 @@ public class SquareSpace {
 
     }
 
-    private void checkForContainment(Rectangle rectangle, Rectangle rectangle2){
+    protected void checkForContainment(Rectangle rectangle, Rectangle rectangle2){
         Rectangle largerRectangle = rectangle;
         Rectangle smallRectangle = rectangle2;
 
@@ -80,7 +80,7 @@ public class SquareSpace {
 
     }
 
-    private void checkForAdjacency(Rectangle rectangle, Rectangle rectangle2){
+    protected void checkForAdjacency(Rectangle rectangle, Rectangle rectangle2){
 
         boolean adjacentByX = false;
         boolean adjacentByY = false;
