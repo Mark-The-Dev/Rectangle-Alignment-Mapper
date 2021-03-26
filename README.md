@@ -21,12 +21,12 @@
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
+ <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
+ <br><br>
+ <img align="center" src="./images/exampleMap.png" alt="Example Map" />
 </p>
 
-  <img align="center" src="./images/exampleMap.png" alt="Example Map" />
 
-  &#xa0;
 
 <br>
 
