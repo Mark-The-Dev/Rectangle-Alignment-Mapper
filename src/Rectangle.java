@@ -11,7 +11,7 @@ public class Rectangle {
     // constructor - validates that rectangle will fit in map
     public Rectangle(int length, int width, int startX, int startY) {
         if(length < 2 || width < 2 || startX < 0 || startY < 0){
-            throw new IllegalArgumentException("Rectangle must be atleast 2 width, 2 length, and start within a positive coordinate");
+            throw new IllegalArgumentException("Rectangle must be at least 2 width, 2 length, and start within a positive coordinate");
         }
 
         this.length = length;
