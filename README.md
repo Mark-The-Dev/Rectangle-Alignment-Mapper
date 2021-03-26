@@ -39,9 +39,12 @@ Once the rectangles are added the map can be drawn. In addition to drawing out t
 ## :sparkles: Features ##
 
 :heavy_check_mark: Create your own map.
+
 :heavy_check_mark: Create unique rectangles to be added by size and location.
 :heavy_check_mark: Checks if the rectangles intersect at any point.
+
 :heavy_check_mark: Checks if either of the rectangles is contained within the other.
+
 :heavy_check_mark: Checks if the rectangles are adjacent and declares if Proper, Sub-line or Partial.
 
 ## :rocket: Technologies ##
