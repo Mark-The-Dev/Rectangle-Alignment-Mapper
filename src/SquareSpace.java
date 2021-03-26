@@ -14,6 +14,9 @@ public class SquareSpace {
 
 
     public SquareSpace(int length, int width) {
+        if(length < 12 || width < 12){
+            throw new IllegalArgumentException("This map must be at least 12 by 12");
+        }
         this.length = length;
         this.width = width;
         this.rectangles = new ArrayList<>();
@@ -24,12 +27,12 @@ public class SquareSpace {
     public void addRectangles(Rectangle rectangle, Rectangle rectangle2){
 
         if (rectangle.getEndX() > width - 1 || rectangle.getEndY() > length - 1 || rectangle2.getEndX() > width - 1 || rectangle2.getEndY() > length - 1){
-            System.out.println("Looks like one of these rectangles does not fit inside the map!");
-            return;
+            throw new IllegalArgumentException("Rectangles must fit within the map!");
+
         }
 
         if (this.rectangles.size() >= 2){
-            return;
+            throw new IllegalArgumentException("This map already has 2 rectangles!");
         } else {
           this.rectangles.add(rectangle);
           this.rectangles.add(rectangle2);
@@ -184,5 +187,21 @@ public class SquareSpace {
 
     public int getWidth() {
         return width;
+    }
+
+    public ArrayList<Rectangle> getRectangles() {
+        return rectangles;
+    }
+
+    protected boolean isIntersection() {
+        return intersection;
+    }
+
+    protected boolean isContainment() {
+        return containment;
+    }
+
+    protected String getAdjacency() {
+        return adjacency;
     }
 }
