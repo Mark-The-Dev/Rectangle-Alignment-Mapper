@@ -24,7 +24,7 @@
   <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
 </p>
 
-  <img src="./exampleMap.png" alt="Example Map" />
+  <img align="center" src="./images/exampleMap.png" alt="Example Map" />
 
   &#xa0;
 
