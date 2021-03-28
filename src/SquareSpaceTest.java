@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SquareSpaceTest {
 
-    private SquareSpace squareSpace;
+    private static SquareSpace squareSpace;
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -79,9 +79,10 @@ class SquareSpaceTest {
 
     @Test
     @DisplayName("Registers correct Intersection for added rectangles")
-    void checkForIntersection() {
+    static void checkForIntersection() {
         Rectangle rec1 = new Rectangle(4,4,0,0);
         Rectangle rec2 = new Rectangle(4,4,3,0);
+        Rectangle rec3 = new Rectangle(4,4,5,0);
 
         squareSpace.addRectangles(rec1,rec2);
 
@@ -97,12 +98,12 @@ class SquareSpaceTest {
 
 
         // tests for false
-        squareSpace = new SquareSpace(25,25);
-        rec2 = new Rectangle(4,4,5,0);
+        SquareSpace squareSpace2 = new SquareSpace(25,25);
 
-        squareSpace.addRectangles(rec1,rec2);
 
-        assertEquals(false, squareSpace.isIntersection());
+        squareSpace2.addRectangles(rec1,rec3);
+
+        assertEquals(false, squareSpace2.isIntersection());
 
 
 
@@ -110,7 +111,7 @@ class SquareSpaceTest {
 
     @Test
     @DisplayName("Registers correct containment for added rectangles")
-    void checkForContainment() {
+    static void checkForContainment() {
 
         Rectangle rec1 = new Rectangle(10,10,0,0);
         Rectangle rec2 = new Rectangle(3,3,2,2);
@@ -126,12 +127,12 @@ class SquareSpaceTest {
 
 
         // tests for false
-        squareSpace = new SquareSpace(25,25);
-        rec2 = new Rectangle(4,4,8,8);
+        SquareSpace squareSpace2 = new SquareSpace(25,25);
+        Rectangle rec3 = new Rectangle(4,4,8,8);
 
-        squareSpace.addRectangles(rec1,rec2);
+        squareSpace2.addRectangles(rec1,rec3);
 
-        assertEquals(false, squareSpace.isContainment());
+        assertEquals(false, squareSpace2.isContainment());
     }
 
     @Test

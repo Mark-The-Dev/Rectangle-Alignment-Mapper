@@ -22,6 +22,7 @@ public class GUI {
     static int tX=-1;
     static int tY=-1;
     static int num =1;
+    static SquareSpace newMap = new SquareSpace(20,20);
     static Rectangle rec1;
     static Rectangle rec2;
 
@@ -93,10 +94,9 @@ public class GUI {
                         }
                     } else {
                         // add render
+                        tryAgain(input);
                     }
 
-
-                    System.out.println(input);
                     inputText.setText(""); // clear input text
                     // TODO: call function - set output text
                     instructionsText1.setText(setInstructions());
@@ -125,6 +125,7 @@ public class GUI {
                     }
                 } else {
                     // add render
+                    tryAgain(input);
                 }
 
                 outputText.setText(output);
@@ -199,6 +200,8 @@ public class GUI {
             } else {
                 instructions = "Are these dimensions correct? (type y or n)";
             }
+        } else {
+            instructions = "would you like to try again? (y / n)";
         }
 
 
@@ -209,15 +212,18 @@ public class GUI {
         if (val.toLowerCase().contains("y")){
             if (rec1 == null){
                 rec1 = new Rectangle(tLength,tWidth,tX,tY);
+                output = "Rectangle " + num + " has been added.";
             } else {
                 rec2 = new Rectangle(tLength,tWidth,tX,tY);
+                newMap.addRectangles(rec1, rec2);
+                output = newMap.drawMapGui();
             }
             tLength = 0;
             tWidth = 0;
             tX = -1;
             tY = -1;
+            outputGood = "Map is 20 x 20\n";
 
-            output = "Rectangle " + num + " has been added.";
             num++;
             isCorrect = false;
         } else if (val.toLowerCase().contains("n")){
@@ -227,6 +233,22 @@ public class GUI {
             tY = -1;
             output = "Very well, please enter the new values for Rectangle " + num;
             outputGood = "Map is 20 x 20\n";
+        } else {
+            output = "Please use y or n";
+        }
+    }
+
+    private static void tryAgain(String val){
+        if (val.toLowerCase().contains("y")){
+            newMap = new SquareSpace(20,20);
+            rec1 = null;
+            rec2 = null;
+            num = 1;
+            output ="Hello and welcome to the Rectangle Alignment Tool \n" +
+                    "For the purpose of this demo you are given a 20x20 map and can add Rectangles to it.";
+        } else if (val.toLowerCase().contains("n")){
+            output ="Goodbye!";
+            System.exit(0);
         } else {
             output = "Please use y or n";
         }

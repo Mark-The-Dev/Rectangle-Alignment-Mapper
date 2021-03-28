@@ -9,19 +9,20 @@ public class Main {
 
         // code to test in the IDE quickly
 
-//        Rectangle rec1 = new Rectangle(4, 4, 4,2);
-//        Rectangle rec2 = new Rectangle(4, 4, 0,0);
-//
-//        SquareSpace newMap = new SquareSpace(14, 20);
-//        newMap.addRectangles(rec2, rec1);
-//
-//        newMap.drawMap();
+        Rectangle rec1 = new Rectangle(4, 4, 0,0);
+        Rectangle rec2 = new Rectangle(4,4,5,0);
 
+        SquareSpace newMap = new SquareSpace(14, 20);
+        newMap.addRectangles(rec1, rec2);
+
+        //System.out.println(newMap.drawMapGui());
+
+        newMap.drawMap();
         // method to run command line game.
 
         //Console console = new Console(command());
 
-        command();
+       // command();
     }
 
     // command line game.
