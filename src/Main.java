@@ -1,8 +1,10 @@
+import java.io.Console;
 import java.util.Scanner;
 
 public class Main {
 
     public static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         // code to test in the IDE quickly
@@ -16,6 +18,9 @@ public class Main {
 //        newMap.drawMap();
 
         // method to run command line game.
+
+        //Console console = new Console(command());
+
         command();
     }
 
@@ -78,6 +83,7 @@ public class Main {
             if (tLength == 0){
                 System.out.println("please enter the length rectangle " +num  + ".");
                 temp = scanner.nextInt();
+
                 if (temp < 2 || temp > 20){
                     System.out.println("Please use a value between 2 and 20 for the length!");
                     continue;

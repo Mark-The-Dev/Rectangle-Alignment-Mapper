@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="RectangleGame">
+    <output-path>$PROJECT_DIR$/out/artifacts/RectangleGame</output-path>
+    <root id="root">
+      <element id="archive" name="RectangleTask.jar">
+        <element id="module-output" name="RectangleTask" />
+      </element>
+    </root>
+  </artifact>
+</component>
