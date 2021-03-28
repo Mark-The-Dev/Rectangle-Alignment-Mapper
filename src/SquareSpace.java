@@ -106,6 +106,11 @@ public class SquareSpace {
     // method to check for adjacency
     protected void checkForAdjacency(Rectangle rectangle, Rectangle rectangle2){
 
+        // if containment or intersection exists, the rectangles are not adjacent.
+        if(this.containment || this.intersection){
+            return;
+        }
+
         // initialized boolean values
         boolean adjacentByX = false;
         boolean adjacentByY = false;
