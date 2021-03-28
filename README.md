@@ -69,7 +69,13 @@ $ git clone https://github.com/Mark-The-Dev/Rectangle-Alignment-Mapper.git
 $ cd https://github.com/Mark-The-Dev/Rectangle-Alignment-Mapper
 
 # Run the project
-$ Open project folder with IDE and run at main.
+Open project folder with IDE:
+
+Run at Main for choice of raw code terminal output with drawMap or command for terminal draw map game.
+
+Run at Testfile for Test Suite.
+
+Run at GUI or at the jar file for very basic swing gui of the application.
 
 ```
 
