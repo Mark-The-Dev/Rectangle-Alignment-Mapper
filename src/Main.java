@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,6 +11,11 @@ public class Main {
         newMap.addRectangles(rec2, rec1);
 
         newMap.drawMap();
+
+    }
+
+    public static void command(){
+        Scanner scanner = new Scanner(System.in);
 
     }
 }
